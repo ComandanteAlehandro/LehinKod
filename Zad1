@@ -1,0 +1,44 @@
+#include <stdio.h>
+
+int main(void)
+{
+    int m,n,i,j,aij,putin=0,nedoputin=-1,pochtiputin=0;
+    scanf("%d %d",&n, &m);
+    int whoisputin[n];
+
+    for(i=0; i<=n-1; i++)
+    {
+        whoisputin[i]=0;
+    }
+
+    for(j=0;j<=m-1;j++)
+    {
+        nedoputin=-1;
+        pochtiputin=0;
+        for(i=0; i<=n-1;i++)
+        {
+            scanf("%d",&aij);
+            if (aij>nedoputin)
+            {
+                pochtiputin=i;
+                nedoputin=aij;
+            }
+
+        }
+        whoisputin[pochtiputin]++;
+    }
+
+    for(i=1; i<=n-1; i++)
+    {
+       if (whoisputin[i]>whoisputin[putin])
+       {
+           putin=i;
+
+       }
+
+    }
+    putin++;
+printf("%d  ",putin);
+ }
+
+
