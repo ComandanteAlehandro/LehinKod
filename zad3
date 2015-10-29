@@ -1,0 +1,79 @@
+#include <stdio.h>
+
+int main(void)
+{
+    int n;
+    scanf("%d", &n);
+    int wrongnum[n];
+    int i;
+    for (i=0; i<n; i++)
+    {
+        scanf("%i", &wrongnum[i]);
+    }
+
+
+    int j;
+    for (i=0; i<n; i++)
+    {
+        if (wrongnum[i]>n)
+        {
+            wrongnum[i]=0;
+        }
+        else
+        {
+        for(j=0; (j<i); j++)
+        {
+
+            if (wrongnum[i] == wrongnum[j])
+            {
+                wrongnum[i]=0;
+                break;
+            }
+
+        }
+        }
+    }
+
+
+
+
+    int freenum[n];
+    int nb=0;
+    for (i=0; i<n; i++)
+    {
+
+        freenum[i]=0;
+        for(j=0; j<n; j++)
+        {
+            if (wrongnum[j] == i+1)
+            {
+                break;
+            }
+
+        }
+        if (j==n)
+        {
+            freenum[nb]=i+1;
+            nb++;
+        }
+    }
+    nb=0;
+    for (i=0; i<n;i++)
+    {
+        if (wrongnum[i]==0)
+        {
+            wrongnum[i]=freenum[nb];
+            nb++;
+        }
+    }
+
+
+    for (i=0; i<n; i++)
+    {
+        printf("%i ", wrongnum[i]);
+    }
+
+    return 0;
+}
+
+
